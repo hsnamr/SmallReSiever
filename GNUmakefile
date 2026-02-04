@@ -6,16 +6,18 @@ include $(GNUSTEP_MAKEFILES)/common.make
 APP_NAME = SmallReSiever
 
 SmallReSiever_OBJC_FILES = \
-	main.m \
-	AppDelegate.m \
-	SmallStepCompat.m \
-	RSSParser.m \
-	RSSFeed.m \
-	RSSItem.m
+	App/main.m \
+	App/AppDelegate.m \
+	Compat/SmallStepCompat.m \
+	RSS/RSSParser.m \
+	RSS/RSSFeed.m \
+	RSS/RSSItem.m
 
 SmallReSiever_RESOURCE_FILES =
 
-# SmallStep: use ../SmallStep when building without install
+# Include paths for subdirectories (App/, RSS/, Compat/)
+ADDITIONAL_INCLUDE_DIRS += -I. -IApp -IRSS -ICompat
+# SmallStep: use ../SmallStep when building without install (optional)
 SMALLSTEP_DIR ?= ../SmallStep
 ADDITIONAL_INCLUDE_DIRS += -I$(SMALLSTEP_DIR) -I$(SMALLSTEP_DIR)/SmallStep/Core -I$(SMALLSTEP_DIR)/SmallStep/Platform/Linux
 

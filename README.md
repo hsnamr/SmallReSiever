@@ -2,6 +2,38 @@
 
 RSS reader for GNUStep using the [SmallStep](../SmallStep) API and [libxml2](https://gitlab.gnome.org/GNOME/libxml2) (FOSS).
 
+## Project layout
+
+```
+SmallReSiever/
+├── App/              # Application entry and UI
+│   ├── main.m
+│   ├── AppDelegate.h
+│   └── AppDelegate.m
+├── RSS/              # RSS/Atom models and parsing
+│   ├── RSSFeed.h/m
+│   ├── RSSItem.h/m
+│   └── RSSParser.h/m
+├── Compat/           # SmallStep API compatibility (when SmallStep not linked)
+│   ├── SmallStepCompat.h
+│   └── SmallStepCompat.m
+├── GNUmakefile
+├── LICENSE
+└── README.md
+```
+
+## Open source libraries (RSS reading)
+
+RSS/Atom reading is implemented using:
+
+| Library   | Role                    | License   |
+|----------|--------------------------|-----------|
+| **libxml2** | XML parsing (RSS 2.0 and Atom 1.0) | MIT       |
+
+- **libxml2**: [https://gitlab.gnome.org/GNOME/libxml2](https://gitlab.gnome.org/GNOME/libxml2) — C library for parsing XML; used in `RSS/RSSParser.m` to parse feed XML and populate `RSSFeed` / `RSSItem`. No other third‑party RSS/XML libraries are used.
+
+The app also uses **GNUStep** (Base + GUI) for the desktop UI and, optionally, the **SmallStep** API (either from [../SmallStep](../SmallStep) or the bundled **Compat** implementation).
+
 ## Features
 
 - Fetch RSS 2.0 and Atom 1.0 feeds from any HTTP(S) URL
