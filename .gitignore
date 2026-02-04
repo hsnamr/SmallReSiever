@@ -1,0 +1,15 @@
+# GNUStep
+*.o
+*.d
+obj/
+SmallReSiever.app/
+*.make
+*.moved-aside
+
+# macOS
+.DS_Store
+
+# Editor
+*~
+*.swp
+*.swo
